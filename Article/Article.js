@@ -1,7 +1,7 @@
 /* This is the data we will be using to create our articles */
 /* Look over this data, then proceed to line 91*/
 
-const data = [
+const articleData = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
     date: 'Nov 5th, 2018',
@@ -112,13 +112,44 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
-const articleMaker = (articleContent) => {
-  const article = document.createElement('div')
-  const title = document.createElement('h2')
-  const date = document.createElement('p')
-  const firstParagraph = document.createElement('p')
-  const secondParagraph = document.createElement('p')
-  const thirdParagraph = document.createElement('p')
+const articleMaker = (title, date, content, expandButton) => {
 
 
+  const article = document.createElement('div');
+  const h2 = document.createElement('h2');
+  const day = document.createElement('p');
+  const para = document.createElement('p');
+  const expandOpen = document.createElement('button')
+  const expandShut = document.createElement('button')
+
+ article.classList.add('article');
+ day.classList.add('date');
+ para.classList.add('content');
+ expandOpen.classList.add('expandButton')
+ expandShut.classList.add('expandButton')
+
+
+ article.addEventListener('click', () => {
+   expandOpen.classList.toggle('article-open')
+   expandShut.classList.toggle('close')
+ })
+
+ article.append(h2, day, para, expandOpen, expandShut)
+
+ h2.textContent = title;
+ day.textContent = date;
+ para.textContent = content;
+
+  return article;
 }
+
+
+
+const articleComponent = articleMaker('test title', 'test content', 'test content')
+const articles = document.querySelector('.articles')
+articles.appendChild(articleComponent)
+
+
+articleData.forEach(data => {
+  articles.appendChild(articleMaker(data.title, data.date, data.content))
+});
