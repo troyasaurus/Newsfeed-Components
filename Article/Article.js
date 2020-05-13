@@ -1,6 +1,6 @@
 /* This is the data we will be using to create our articles */
 /* Look over this data, then proceed to line 91*/
-//Just adding something to start
+
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
@@ -101,7 +101,7 @@ const data = [
   </div>
 
   Hint: You will need to use createElement more than once here!
-
+  
   Your function should take either an object as its one argument, or 5 separate arguments mapping to each piece of the data object above.
 
   Step 2: Add an event listener to the expandButton span. This listener should toggle the class 'article-open' on the 'article' div.
@@ -112,3 +112,13 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+const articleMaker = (articleContent) => {
+  const article = document.createElement('div')
+  const title = document.createElement('h2')
+  const date = document.createElement('p')
+  const firstParagraph = document.createElement('p')
+  const secondParagraph = document.createElement('p')
+  const thirdParagraph = document.createElement('p')
+
+
+}
