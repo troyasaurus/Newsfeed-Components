@@ -37,12 +37,27 @@ const menuBtn = document.querySelector('.menu-button');
 
 const menuMaker = (menuPeices) =>{
   const menu = document.createElement('div')
-  const menuP = document.createElement('ul')
+  const ul = document.createElement('ul')
 
 
+menu.appendChild(ul);
+
+menuItems.forEach((i) => {
+  const li = document.createElement('li');
+  li.textContent = i; 
+  ul.appendChild(li); 
 
 
+})
 
+menu.classList.add('menu');
+
+menuBtn.addEventListener('click', () => {
+  menu.classList.toggle('menu--open');
 
   
+})
+return menu;
+
 }
+header.appendChild(menuMaker(menuItems));
