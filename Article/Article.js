@@ -1,7 +1,7 @@
 /* This is the data we will be using to create our articles */
 /* Look over this data, then proceed to line 91*/
 
-const articleData = [
+const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
     date: 'Nov 5th, 2018',
@@ -121,12 +121,40 @@ const secondP = document.createElement('p');
 const thirdP = document.createElement('p');
 const expandButton = document.createElement('span');
 
-article.append(h2, day, firstP, secondP, thirdP, expandButton)
+article.appendChild(h2);
+article.appendChild(day);
+article.appendChild(firstP);
+article.appendChild(secondP);
+article.appendChild(thirdP);
+article.appendChild(expandButton);
+
+
+
+h2.textContent = articleCode.title;
+day.textContent = articleCode.date;
+firstP.textContent = articleCode.firstParagraph;
+secondP.textContent = articleCode.secondParagraph;
+thirdP.textContent = articleCode.thirdParagraph;
+expandButton.textContent ='Expand';
+
+expandButton.addEventListener('click', () => {
+  article.classList.toggle('article-open')
+});
+
+article.classList.add('article');
+day.classList.add('date');
+expandButton.classList.add('expandButton');
+
+return article; 
+
+
+}
+
+const articles = document.querySelector('.articles');
 
 
 
 
-
-articleData.forEach(data => {
-  articles.appendChild(articleMaker())
+data.forEach(dataa => {
+  articles.appendChild(articleMaker(dataa))
 });
