@@ -1,5 +1,6 @@
 /* This is the data we will be using to create our articles */
 /* Look over this data, then proceed to line 91*/
+
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
@@ -100,7 +101,7 @@ const data = [
   </div>
 
   Hint: You will need to use createElement more than once here!
-
+  
   Your function should take either an object as its one argument, or 5 separate arguments mapping to each piece of the data object above.
 
   Step 2: Add an event listener to the expandButton span. This listener should toggle the class 'article-open' on the 'article' div.
@@ -111,3 +112,49 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+const articleMaker = (articleCode) => {
+const article = document.createElement('div');
+const h2 = document.createElement('h2');
+const day = document.createElement('p');
+const firstP = document.createElement('p');
+const secondP = document.createElement('p');
+const thirdP = document.createElement('p');
+const expandButton = document.createElement('span');
+
+article.appendChild(h2);
+article.appendChild(day);
+article.appendChild(firstP);
+article.appendChild(secondP);
+article.appendChild(thirdP);
+article.appendChild(expandButton);
+
+
+
+h2.textContent = articleCode.title;
+day.textContent = articleCode.date;
+firstP.textContent = articleCode.firstParagraph;
+secondP.textContent = articleCode.secondParagraph;
+thirdP.textContent = articleCode.thirdParagraph;
+expandButton.textContent ='Expand';
+
+expandButton.addEventListener('click', () => {
+  article.classList.toggle('article-open')
+});
+
+article.classList.add('article');
+day.classList.add('date');
+expandButton.classList.add('expandButton');
+
+return article; 
+
+
+}
+
+const articles = document.querySelector('.articles');
+
+
+
+
+data.forEach(dataa => {
+  articles.appendChild(articleMaker(dataa))
+});
